@@ -1,0 +1,31 @@
+source 'https://github.com/Flonger/FLSpeces.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '8.0'
+use_frameworks!
+target 'PerA' do
+    inhibit_all_warnings!         #禁止所有警告
+    pod 'CYLTabBarController', '~> 1.17.22'   #tabbar
+    pod 'WRNavigationBar'
+    # 响应函数式框架
+    pod 'ReactiveObjC'
+    # 自动布局
+    pod 'Masonry'
+    pod 'WHC_AutoLayoutKit'
+    pod 'SVProgressHUD'
+    #网络
+    pod 'AFNetworking'
+    #图像
+    pod 'SDWebImage'
+    #tableview空状态
+    pod 'DZNEmptyDataSet'
+    #相册选择库
+    pod 'HXWeiboPhotoPicker'
+    
+    #组件化
+    pod 'CTMediator'
+    
+    #网络等待或读取本地数据库时的加载骨架库
+    pod 'TABAnimated' , '~> 2.0.0'
+    
+end
