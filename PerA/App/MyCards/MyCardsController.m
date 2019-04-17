@@ -7,83 +7,163 @@
 
 
 #import "MyCardsController.h"
-#import <PassKit/PassKit.h>
 #import "Target_MyCards.h"
 #import "AddCardsController.h"
-@interface MyCardsController ()<PKAddPassesViewControllerDelegate>
+#import "CardsListCell.h"
+#import "Cards.h"
+@interface MyCardsController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView * tableView;
+@property (nonatomic, copy) NSArray * dataArray;
 
 @end
 
 @implementation MyCardsController
-
+{
+    JQFMDB *_db;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"我的卡";
-    
-    PKAddPassButton *pkAddBtn = [[PKAddPassButton alloc] initWithAddPassButtonStyle:PKAddPassButtonStyleBlackOutline];
-    pkAddBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-    pkAddBtn.frame = CGRectMake(100, 100, 220, 40);
-    [self.view addSubview:pkAddBtn];
-    
-    [pkAddBtn addTarget:self action:@selector(pkClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    PKAddPassButton *pkAddBtn2 = [[PKAddPassButton alloc] initWithAddPassButtonStyle:PKAddPassButtonStyleBlack];
-    pkAddBtn2.titleLabel.font = [UIFont systemFontOfSize:12];
-    pkAddBtn2.frame = CGRectMake(100, 200, 220, 40);
-    [self.view addSubview:pkAddBtn2];
-    
-    [pkAddBtn2 addTarget:self action:@selector(pk2Click:) forControlEvents:UIControlEventTouchUpInside];
+    [self initUI];
 }
 
-- (void)pkClick:(PKAddPassButton *)sender
+
+- (void)initUI{
+    [self.view addSubview:self.tableView];
+    [self.tableView tab_startAnimation];
+    [self performSelector:@selector(getData) withObject:nil afterDelay:5.0];
+}
+
+
+- (void)getData{
+    
+    _dataArray = [NSMutableArray array];
+    if (!_db) {
+        _db = [JQFMDB shareDatabase:@"testcards.sqlite"];
+    }
+    [_db jq_inDatabase:^{
+        _dataArray = [_db jq_lookupTable:@"cardlist" dicOrModel:[Cards class] whereFormat:nil];
+        [self.tableView reloadData];
+    }];
+    
+    [self.tableView tab_endAnimation];
+
+}
+
+- (UITableView *)tableView
 {
-    NSString *passPath = [[NSBundle mainBundle] pathForResource:@"Lollipop" ofType:@"pkpass"];
-    NSData *passData = [[NSData alloc] initWithContentsOfFile:passPath];
-    NSError *error = nil;
-    PKPass *pass = [[PKPass alloc] initWithData:passData error:&error];
-    if (error) {
-        NSLog(@"创建pass 过程中发生错误,错误信息:%@", error.localizedDescription);
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:(UITableViewStylePlain)];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.emptyDataSetDelegate = self;
+        _tableView.emptyDataSetSource = self;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [_tableView registerClass:[CardsListCell class] forCellReuseIdentifier:@"CardsListCell"];
+        
+        if (@available(iOS 11.0, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+        CGFloat h = kNavigationHeight;
+        CGFloat safe = kSafeAreaHeight;
+//        _tableView.backgroundColor = BackColor;
+        _tableView.frame = CGRectMake(0, h , kScreenWidth, kScreenHeight - h - safe);
+        
+        TABAnimatedObject *tabAnimated = [[TABAnimatedObject alloc] init];
+        tabAnimated.animatedCount = 10;
+        _tableView.tabAnimated = tabAnimated;
+    }
+    return _tableView;
+}
+//=================================================================
+//                       UITableViewDelegate
+//=================================================================
+#pragma mark - UITableViewDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *rid=@"CardsListCell";
+    
+    CardsListCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
+    
+    [cell setUpCell];
+    
+    if (!tableView.tabAnimated.isAnimating) {
+        [cell loadCellWith:_dataArray[indexPath.row]];
+
     }
     
-    PKAddPassesViewController *vc = [[PKAddPassesViewController alloc] initWithPass:pass];
-    vc.delegate = self;
-    
-    [self presentViewController:vc animated:YES completion:nil];
+    return cell;
     
 }
-- (void)pk2Click:(PKAddPassButton *)sender
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *passPath = [[NSBundle mainBundle] pathForResource:@"Lollipop" ofType:@"pkpass"];
-//    NSData *passData = [[NSData alloc] initWithContentsOfFile:passPath];
-//    NSError *error = nil;
-//    PKPass *pass = [[PKPass alloc] initWithData:passData error:&error];
-//    if (error) {
-//        NSLog(@"创建pass 过程中发生错误,错误信息:%@", error.localizedDescription);
-//    }
-//    
-//    PKAddPassesViewController *vc = [[PKAddPassesViewController alloc] initWithPass:pass];
-//    vc.delegate = self;
-//    
-//    [self presentViewController:vc animated:YES completion:nil];
     
-    AddCardsController * acc = [[AddCardsController alloc] init];
-    
-//    [self.navigationController pushViewController:[[CTMediator sharedInstance] fl_mediator_addCardsControllerWithParams:nil] animated:YES];
-    [self.navigationController pushViewController:acc animated:YES];
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CL(90);
 }
 
 
-#pragma mark -  delegate
-
-- (void)addPassesViewControllerDidFinish:(PKAddPassesViewController *)controller
+#pragma mark - DZNEmptyDataSetSource Methods
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSLog(@"add pass finished");
+    NSString *text = nil;
+    UIFont *font = nil;
+    UIColor *textColor = nil;
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSMutableDictionary *attributes = [NSMutableDictionary new];
     
+    text = NSLocalizedString(@"暂无卡片",nil);
+    font = SYSTEMFONT(14);
+    textColor = Color_9;
+    
+    if (!text) {
+        return nil;
+    }
+    
+    if (font) [attributes setObject:font forKey:NSFontAttributeName];
+    if (textColor) [attributes setObject:textColor forKey:NSForegroundColorAttributeName];
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    
+    return UIIMAGE(@"dl");
+}
+#pragma mark - DZNEmptyDataSetDelegate Methods
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
+    return YES;
+}
+
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView
+{
+    return YES;
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView
+{
+    return YES;
+}
+
+- (BOOL)emptyDataSetShouldAnimateImageView:(UIScrollView *)scrollView
+{
+    return YES;
+}
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
+{
+    
+    //    [self getData];
 }
 
 

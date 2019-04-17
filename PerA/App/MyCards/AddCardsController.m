@@ -7,31 +7,39 @@
 
 
 #import "AddCardsController.h"
+#import "Cards.h"
+
 
 @interface AddCardsController ()
 
 @end
 
 @implementation AddCardsController
-
+{
+    JQFMDB *_db;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setUpUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setUpUI{
+    Cards * card = [[Cards alloc] init];
+    card.cardNum = @"00000000";
+    card.cardName = @"世纪联华";
+    card.cardPhoto = @"/user/user/user/user.jpg";
+    card.type = CardTypeVip;
+    card.cardDetail = @"世纪联华的会员卡";
+    
+    if (!_db) {
+        _db = [JQFMDB shareDatabase:@"testcards.sqlite"];
+    }
+    if (![_db jq_isExistTable:@"cardlist"]) {
+        [_db jq_createTable:@"cardlist" dicOrModel:[Cards class]];
+    }
+    
+    [_db jq_insertTable:@"cardlist" dicOrModel:card];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

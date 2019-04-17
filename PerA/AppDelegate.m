@@ -64,10 +64,6 @@
     // 设置全局圆角
     [TABViewAnimated sharedAnimated].animatedCornerRadius = 3.f;
 //    [TABViewAnimated sharedAnimated].animatedColor = kColor(0x23eeee);
-    // 设置全局模版，有内置模版
-    // 注意，模版一定要按照规矩来，继承自TABBaseTableViewCell,TABBaseCollectionViewCell
-    // 模版的初衷是另写一个新的cell，如果你用项目中用到的cell，也不是不可以，只是会在cell内产生耦合
-    [TABViewAnimated sharedAnimated].templateTableViewCell = [TABBaseTableViewCell class];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

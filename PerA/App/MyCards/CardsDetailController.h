@@ -1,13 +1,13 @@
 /*******************************************************************************\
-** PerA:BaseViewController.h
-** Created by Flonger(xue@flonger.com) on 2019/4/2
+** PerA:CardsDetailController.h
+** Created by Flonger(xue@flonger.com) on 2019/4/17
 **
 **Copyright © 2019 flonger. All rights reserved.
 \*******************************************************************************/
 
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface BaseViewController : UIViewController<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+@interface CardsDetailController : BaseViewController
 
 @end

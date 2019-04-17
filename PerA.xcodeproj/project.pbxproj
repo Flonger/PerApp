@@ -38,6 +38,9 @@
 		F65C81E7225E15C4006CA3F4 /* Target_Personal.m in Sources */ = {isa = PBXBuildFile; fileRef = F65C81E6225E15C4006CA3F4 /* Target_Personal.m */; };
 		F65C81EA225E15DD006CA3F4 /* Target_Records.m in Sources */ = {isa = PBXBuildFile; fileRef = F65C81E9225E15DD006CA3F4 /* Target_Records.m */; };
 		F65C81ED225E15F4006CA3F4 /* CTMediator+Records.m in Sources */ = {isa = PBXBuildFile; fileRef = F65C81EC225E15F4006CA3F4 /* CTMediator+Records.m */; };
+		F6D6BB8222671A4E00870D9C /* Cards.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D6BB8122671A4E00870D9C /* Cards.m */; };
+		F6D6BB862267290F00870D9C /* CardsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D6BB852267290F00870D9C /* CardsListCell.m */; };
+		F6D6BB8922673C3200870D9C /* CardsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D6BB8822673C3200870D9C /* CardsDetailController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +94,12 @@
 		F65C81E9225E15DD006CA3F4 /* Target_Records.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_Records.m; sourceTree = "<group>"; };
 		F65C81EB225E15F4006CA3F4 /* CTMediator+Records.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CTMediator+Records.h"; sourceTree = "<group>"; };
 		F65C81EC225E15F4006CA3F4 /* CTMediator+Records.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CTMediator+Records.m"; sourceTree = "<group>"; };
+		F6D6BB8022671A4E00870D9C /* Cards.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cards.h; sourceTree = "<group>"; };
+		F6D6BB8122671A4E00870D9C /* Cards.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cards.m; sourceTree = "<group>"; };
+		F6D6BB842267290F00870D9C /* CardsListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardsListCell.h; sourceTree = "<group>"; };
+		F6D6BB852267290F00870D9C /* CardsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardsListCell.m; sourceTree = "<group>"; };
+		F6D6BB8722673C3200870D9C /* CardsDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardsDetailController.h; sourceTree = "<group>"; };
+		F6D6BB8822673C3200870D9C /* CardsDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardsDetailController.m; sourceTree = "<group>"; };
 		FD30A27A77BABE3708523892 /* Pods_PerA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -144,6 +153,7 @@
 		F63E7259225352D8000F1CD5 /* PerA */ = {
 			isa = PBXGroup;
 			children = (
+				F6D6BB7E2267143B00870D9C /* DB */,
 				F65C81A6225D9200006CA3F4 /* Source */,
 				F63E7270225354BA000F1CD5 /* App */,
 				F63E725A225352D8000F1CD5 /* AppDelegate.h */,
@@ -205,6 +215,8 @@
 		F65C81CF225DD0DA006CA3F4 /* MyCards */ = {
 			isa = PBXGroup;
 			children = (
+				F6D6BB832267273100870D9C /* View */,
+				F6D6BB7F22671A3300870D9C /* Model */,
 				F65C81D7225DD25B006CA3F4 /* Target_MyCards.h */,
 				F65C81D8225DD25B006CA3F4 /* Target_MyCards.m */,
 				F65C81D4225DD225006CA3F4 /* CTMediator+MyCards.h */,
@@ -213,6 +225,8 @@
 				F63E7278225354F4000F1CD5 /* MyCardsController.m */,
 				F65C81D1225DD201006CA3F4 /* AddCardsController.h */,
 				F65C81D2225DD201006CA3F4 /* AddCardsController.m */,
+				F6D6BB8722673C3200870D9C /* CardsDetailController.h */,
+				F6D6BB8822673C3200870D9C /* CardsDetailController.m */,
 			);
 			path = MyCards;
 			sourceTree = "<group>";
@@ -241,6 +255,31 @@
 				F63E727B22535500000F1CD5 /* PersonalController.m */,
 			);
 			path = Personal;
+			sourceTree = "<group>";
+		};
+		F6D6BB7E2267143B00870D9C /* DB */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		F6D6BB7F22671A3300870D9C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6D6BB8022671A4E00870D9C /* Cards.h */,
+				F6D6BB8122671A4E00870D9C /* Cards.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6D6BB832267273100870D9C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6D6BB842267290F00870D9C /* CardsListCell.h */,
+				F6D6BB852267290F00870D9C /* CardsListCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,7 +396,10 @@
 				"${BUILT_PRODUCTS_DIR}/CTMediator/CTMediator.framework",
 				"${BUILT_PRODUCTS_DIR}/CYLTabBarController/CYLTabBarController.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/FLCategoryKit/FLCategoryKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/HXWeiboPhotoPicker/HXWeiboPhotoPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/JQFMDB/JQFMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -374,7 +416,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTMediator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CYLTabBarController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLCategoryKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HXWeiboPhotoPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JQFMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -407,10 +452,13 @@
 				F65C81DC225DD485006CA3F4 /* Target_App.m in Sources */,
 				F65C81DF225DD495006CA3F4 /* CTMediator+App.m in Sources */,
 				F65C81E4225E15B0006CA3F4 /* CTMediator+Personal.m in Sources */,
+				F6D6BB8222671A4E00870D9C /* Cards.m in Sources */,
 				F63E726A225352D9000F1CD5 /* main.m in Sources */,
 				F63E725C225352D8000F1CD5 /* AppDelegate.m in Sources */,
 				F63E7279225354F4000F1CD5 /* MyCardsController.m in Sources */,
 				F63E727C22535500000F1CD5 /* PersonalController.m in Sources */,
+				F6D6BB862267290F00870D9C /* CardsListCell.m in Sources */,
+				F6D6BB8922673C3200870D9C /* CardsDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
