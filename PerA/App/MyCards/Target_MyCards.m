@@ -8,12 +8,19 @@
 
 #import "Target_MyCards.h"
 #import "AddCardsController.h"
+#import "CardsDetailController.h"
 @implementation Target_MyCards
 
 - (BaseViewController *)Action_NativeAddCardsController:(NSDictionary *)params{
     AddCardsController * acc = [[AddCardsController alloc] init];
     
     return acc;
+}
+
+- (BaseViewController *)Action_NativeCardsDetailController:(NSDictionary *)params
+{
+    CardsDetailController * cdc = [[CardsDetailController alloc] init];
+    return cdc;
 }
 
 @end

@@ -15,10 +15,11 @@
 
 @implementation CardsDetailController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
     PKAddPassButton *pkAddBtn = [[PKAddPassButton alloc] initWithAddPassButtonStyle:PKAddPassButtonStyleBlackOutline];
     pkAddBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     pkAddBtn.frame = CGRectMake(100, 100, 220, 40);

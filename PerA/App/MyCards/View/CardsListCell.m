@@ -28,6 +28,9 @@
 
 - (void)setUpCell
 {
+    self.accessoryType = UITableViewCellAccessoryNone;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.contentView.backgroundColor = BackColor;
     [self initUI];
 }
 - (void)initUI

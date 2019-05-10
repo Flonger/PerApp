@@ -13,6 +13,7 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #ifdef __OBJC__
 #import "AppDelegate.h"
+#import <AxcAE_TabBar/AxcAE_TabBar.h>
 #import "UIScrollView+EmptyDataSet.h"
 #import "BaseViewController.h"
 #import "CTMediator.h"
@@ -23,6 +24,7 @@
 // 自动布局框架
 #import "Masonry.h"
 #import "WHC_AutoLayout.h"
+#import <ReactiveObjC/ReactiveObjC.h>
 
 #import "UIView+Extension.h"
 
@@ -48,7 +50,7 @@
 
 #define kNavigationHeight (isIPhoneFill?88:64)
 #define kTabbarHeight (isIPhoneFill?83:49)
-#define kSafeAreaHeight (isIPhoneFill?34:0)
+#define kSafeAreaHeight (isIPhoneFill?34+49:49)
 #define kStatusHeight (isIPhoneFill?44:20)
 
 #define kFont(x) [UIFont systemFontOfSize:((isIPhonePlus)?(x + 1):((isIPhoneFill)?(x + 2):x))]

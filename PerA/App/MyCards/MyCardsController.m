@@ -11,10 +11,13 @@
 #import "AddCardsController.h"
 #import "CardsListCell.h"
 #import "Cards.h"
+
+#import "ViewController.h"
+
 @interface MyCardsController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView * tableView;
-@property (nonatomic, copy) NSArray * dataArray;
+@property (nonatomic, strong) NSMutableArray * dataArray;
 
 @end
 
@@ -29,13 +32,37 @@
     [self initUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    [_dataArray removeAllObjects];
+//    [self.tableView reloadData];
+//    
+//    [self.tableView tab_startAnimation];
+//    [self performSelector:@selector(getData) withObject:nil afterDelay:2.0];
+}
+
 
 - (void)initUI{
     [self.view addSubview:self.tableView];
     [self.tableView tab_startAnimation];
-    [self performSelector:@selector(getData) withObject:nil afterDelay:5.0];
+    [self performSelector:@selector(getData) withObject:nil afterDelay:2.0];
 }
 
+- (UIView *)addBtn{
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, CL(80))];
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"添加卡片" forState:(UIControlStateNormal)];
+    [btn setTitleColor:RedColor forState:(UIControlStateNormal)];
+    btn.frame = CGRectMake(CL(15), CL(20), kScreenWidth - CL(30), CL(40));
+    [view addSubview:btn];
+    ViewBorderRadius(btn, CL(5), 1, RedColor);
+    [[btn rac_signalForControlEvents:(UIControlEventTouchUpInside)] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [self.navigationController pushViewController:[[CTMediator sharedInstance] fl_mediator_addCardsControllerWithParams:nil] animated:YES];
+    }];
+    
+    return view;
+}
 
 - (void)getData{
     
@@ -66,13 +93,15 @@
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
+        
+        _tableView.tableFooterView = [self addBtn];
         CGFloat h = kNavigationHeight;
         CGFloat safe = kSafeAreaHeight;
-//        _tableView.backgroundColor = BackColor;
-        _tableView.frame = CGRectMake(0, h , kScreenWidth, kScreenHeight - h - safe);
+        _tableView.frame = CGRectMake(0, h, kScreenWidth, kScreenHeight - h - safe);
         
         TABAnimatedObject *tabAnimated = [[TABAnimatedObject alloc] init];
         tabAnimated.animatedCount = 10;
+        tabAnimated.isNest = YES;
         _tableView.tabAnimated = tabAnimated;
     }
     return _tableView;
@@ -105,7 +134,8 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self.navigationController pushViewController:[[CTMediator sharedInstance] fl_mediator_cardDetailControllerWithParams:nil] animated:YES];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

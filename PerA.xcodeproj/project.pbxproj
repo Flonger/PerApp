@@ -41,6 +41,9 @@
 		F6D6BB8222671A4E00870D9C /* Cards.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D6BB8122671A4E00870D9C /* Cards.m */; };
 		F6D6BB862267290F00870D9C /* CardsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D6BB852267290F00870D9C /* CardsListCell.m */; };
 		F6D6BB8922673C3200870D9C /* CardsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D6BB8822673C3200870D9C /* CardsDetailController.m */; };
+		F6D6BB8C22682DDA00870D9C /* BaseTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D6BB8B22682DDA00870D9C /* BaseTabbar.m */; };
+		F6D6BB91226848A300870D9C /* WHGradientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D6BB90226848A300870D9C /* WHGradientHelper.m */; };
+		F6D6BB942268553600870D9C /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D6BB932268553600870D9C /* BaseNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +103,12 @@
 		F6D6BB852267290F00870D9C /* CardsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardsListCell.m; sourceTree = "<group>"; };
 		F6D6BB8722673C3200870D9C /* CardsDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardsDetailController.h; sourceTree = "<group>"; };
 		F6D6BB8822673C3200870D9C /* CardsDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardsDetailController.m; sourceTree = "<group>"; };
+		F6D6BB8A22682DDA00870D9C /* BaseTabbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTabbar.h; sourceTree = "<group>"; };
+		F6D6BB8B22682DDA00870D9C /* BaseTabbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTabbar.m; sourceTree = "<group>"; };
+		F6D6BB8F226848A300870D9C /* WHGradientHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WHGradientHelper.h; sourceTree = "<group>"; };
+		F6D6BB90226848A300870D9C /* WHGradientHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WHGradientHelper.m; sourceTree = "<group>"; };
+		F6D6BB922268553600870D9C /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		F6D6BB932268553600870D9C /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		FD30A27A77BABE3708523892 /* Pods_PerA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,6 +162,7 @@
 		F63E7259225352D8000F1CD5 /* PerA */ = {
 			isa = PBXGroup;
 			children = (
+				F6D6BB8D2268487800870D9C /* Thirds */,
 				F6D6BB7E2267143B00870D9C /* DB */,
 				F65C81A6225D9200006CA3F4 /* Source */,
 				F63E7270225354BA000F1CD5 /* App */,
@@ -182,6 +192,10 @@
 				F65C81DB225DD485006CA3F4 /* Target_App.m */,
 				F65C81DD225DD495006CA3F4 /* CTMediator+App.h */,
 				F65C81DE225DD495006CA3F4 /* CTMediator+App.m */,
+				F6D6BB8A22682DDA00870D9C /* BaseTabbar.h */,
+				F6D6BB8B22682DDA00870D9C /* BaseTabbar.m */,
+				F6D6BB922268553600870D9C /* BaseNavigationController.h */,
+				F6D6BB932268553600870D9C /* BaseNavigationController.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -280,6 +294,23 @@
 				F6D6BB852267290F00870D9C /* CardsListCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F6D6BB8D2268487800870D9C /* Thirds */ = {
+			isa = PBXGroup;
+			children = (
+				F6D6BB8E2268488800870D9C /* WHGradientHelper */,
+			);
+			path = Thirds;
+			sourceTree = "<group>";
+		};
+		F6D6BB8E2268488800870D9C /* WHGradientHelper */ = {
+			isa = PBXGroup;
+			children = (
+				F6D6BB8F226848A300870D9C /* WHGradientHelper.h */,
+				F6D6BB90226848A300870D9C /* WHGradientHelper.m */,
+			);
+			path = WHGradientHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,8 +424,8 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PerA/Pods-PerA-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/AxcAE_TabBar/AxcAE_TabBar.framework",
 				"${BUILT_PRODUCTS_DIR}/CTMediator/CTMediator.framework",
-				"${BUILT_PRODUCTS_DIR}/CYLTabBarController/CYLTabBarController.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/FLCategoryKit/FLCategoryKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
@@ -406,15 +437,14 @@
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/TABAnimated/TABAnimated.framework",
 				"${BUILT_PRODUCTS_DIR}/WHC_AutoLayoutKit/WHC_AutoLayoutKit.framework",
-				"${BUILT_PRODUCTS_DIR}/WRNavigationBar/WRNavigationBar.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AxcAE_TabBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTMediator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CYLTabBarController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLCategoryKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
@@ -426,7 +456,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TABAnimated.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WHC_AutoLayoutKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WRNavigationBar.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -442,14 +471,17 @@
 			files = (
 				F63E7276225354E9000F1CD5 /* RecordsController.m in Sources */,
 				F65C81D3225DD201006CA3F4 /* AddCardsController.m in Sources */,
+				F6D6BB8C22682DDA00870D9C /* BaseTabbar.m in Sources */,
 				F65C81E7225E15C4006CA3F4 /* Target_Personal.m in Sources */,
 				F63E725F225352D8000F1CD5 /* ViewController.m in Sources */,
 				F65C81EA225E15DD006CA3F4 /* Target_Records.m in Sources */,
 				F65C81D6225DD225006CA3F4 /* CTMediator+MyCards.m in Sources */,
 				F65C81D9225DD25B006CA3F4 /* Target_MyCards.m in Sources */,
 				F63E7273225354D1000F1CD5 /* BaseViewController.m in Sources */,
+				F6D6BB91226848A300870D9C /* WHGradientHelper.m in Sources */,
 				F65C81ED225E15F4006CA3F4 /* CTMediator+Records.m in Sources */,
 				F65C81DC225DD485006CA3F4 /* Target_App.m in Sources */,
+				F6D6BB942268553600870D9C /* BaseNavigationController.m in Sources */,
 				F65C81DF225DD495006CA3F4 /* CTMediator+App.m in Sources */,
 				F65C81E4225E15B0006CA3F4 /* CTMediator+Personal.m in Sources */,
 				F6D6BB8222671A4E00870D9C /* Cards.m in Sources */,

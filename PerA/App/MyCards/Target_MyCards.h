@@ -10,5 +10,6 @@
 
 @interface Target_MyCards : NSObject
 - (BaseViewController *)Action_NativeAddCardsController:(NSDictionary *)params;
+- (BaseViewController *)Action_NativeCardsDetailController:(NSDictionary *)params;
 
 @end

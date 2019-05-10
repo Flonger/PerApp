@@ -7,54 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "CYLTabBarController.h"
+#import "BaseTabbar.h"
 
 @interface AppDelegate ()
-@property (nonatomic, strong) CYLTabBarController * tabBarController;
 @end
 
 @implementation AppDelegate
-
-- (void)customizeTabBarForController:(CYLTabBarController *)tabBarController {
-    
-    NSDictionary *dict1 = @{
-                            CYLTabBarItemTitle : @"记录",
-                            CYLTabBarItemImage : @"home",
-                            CYLTabBarItemSelectedImage : @"home_h",
-                            };
-    NSDictionary *dict2 = @{
-                            CYLTabBarItemTitle : @"我的卡",
-                            CYLTabBarItemImage : @"love",
-                            CYLTabBarItemSelectedImage : @"love_h",
-                            };
-    NSDictionary *dict3 = @{
-                            CYLTabBarItemTitle : @"个人中心",
-                            CYLTabBarItemImage : @"user",
-                            CYLTabBarItemSelectedImage : @"user_h",
-                            };
-    
-    NSArray *tabBarItemsAttributes = @[ dict1, dict2, dict3 ];
-    tabBarController.tabBarItemsAttributes = tabBarItemsAttributes;
-}
-- (void)setupViewControllers {
-    UIViewController *firstNavigationController = [[UINavigationController alloc]
-                                                   initWithRootViewController:[[CTMediator sharedInstance] fl_mediator_recordsControllerWithParams:nil]];
-    
-    UIViewController *secondNavigationController = [[UINavigationController alloc]
-                                                    initWithRootViewController:[[CTMediator sharedInstance] fl_mediator_myCardsControllerWithParams:nil]];
-    UIViewController *thirdNavigationController = [[UINavigationController alloc]
-                                                    initWithRootViewController:[[CTMediator sharedInstance] fl_mediator_personalControllerWithParams:nil]];
-    
-    CYLTabBarController *tabBarController = [[CYLTabBarController alloc] init];
-    [self customizeTabBarForController:tabBarController];
-    [tabBarController setViewControllers:@[
-                                           firstNavigationController,
-                                           secondNavigationController,
-                                           thirdNavigationController
-                                           ]];
-    self.tabBarController = tabBarController;
-}
-
 - (void)setDefultTABViewAnimated{
     // 设置TABAnimated相关属性
     [[TABViewAnimated sharedAnimated] initWithBinAnimation];
@@ -69,8 +27,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setDefultTABViewAnimated];
-    [self setupViewControllers];
-    [self.window setRootViewController:self.tabBarController];
+    BaseTabbar * baseBar = [[BaseTabbar alloc] init];
+    [self.window setRootViewController:baseBar];
+    
+    
     return YES;
 }
 

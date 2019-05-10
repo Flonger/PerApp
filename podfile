@@ -6,10 +6,9 @@ use_frameworks!
 target 'PerA' do
     inhibit_all_warnings!         #禁止所有警告
     pod 'FLCategoryKit'
-
-    
-    pod 'CYLTabBarController', '~> 1.17.22'   #tabbar
-    pod 'WRNavigationBar'
+    #tabbar
+    pod 'AxcAE_TabBar'
+#    pod 'WRNavigationBar'
     # 响应函数式框架
     pod 'ReactiveObjC'
     # 自动布局

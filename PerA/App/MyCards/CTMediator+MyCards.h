@@ -10,5 +10,6 @@
 
 @interface CTMediator (MyCards)
 - (UIViewController *)fl_mediator_addCardsControllerWithParams:(NSDictionary *)dict;
+- (UIViewController *)fl_mediator_cardDetailControllerWithParams:(NSDictionary *)dict;
 
 @end

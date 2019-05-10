@@ -45,7 +45,7 @@ NSString * const kCTMediatorActionNativTo_PersonalController = @"NativePersonalC
 }
 
 - (UIViewController *)fl_mediator_recordsControllerWithParams:(NSDictionary *)dict{
-    UIViewController *viewController = [self performTarget:kCTMediatorTarget_App
+    BaseViewController *viewController = [self performTarget:kCTMediatorTarget_App
                                                     action:kCTMediatorActionNativTo_RecordsController
                                                     params:dict
                                          shouldCacheTarget:YES];
@@ -59,7 +59,7 @@ NSString * const kCTMediatorActionNativTo_PersonalController = @"NativePersonalC
     }
 }
 - (UIViewController *)fl_mediator_myCardsControllerWithParams:(NSDictionary *)dict{
-    UIViewController *viewController = [self performTarget:kCTMediatorTarget_App
+    BaseViewController *viewController = [self performTarget:kCTMediatorTarget_App
                                                     action:kCTMediatorActionNativTo_MyCardsController
                                                     params:dict
                                          shouldCacheTarget:YES];
@@ -73,7 +73,7 @@ NSString * const kCTMediatorActionNativTo_PersonalController = @"NativePersonalC
     }
 }
 - (UIViewController *)fl_mediator_personalControllerWithParams:(NSDictionary *)dict{
-    UIViewController *viewController = [self performTarget:kCTMediatorTarget_App
+    BaseViewController *viewController = [self performTarget:kCTMediatorTarget_App
                                                     action:kCTMediatorActionNativTo_PersonalController
                                                     params:dict
                                          shouldCacheTarget:YES];

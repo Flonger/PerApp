@@ -23,8 +23,11 @@
     // Do any additional setup after loading the view.
     [self setUpUI];
 }
-
 - (void)setUpUI{
+    
+}
+
+- (void)saveCardInfo{
     Cards * card = [[Cards alloc] init];
     card.cardNum = @"00000000";
     card.cardName = @"世纪联华";
